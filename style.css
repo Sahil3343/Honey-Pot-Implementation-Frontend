@@ -1,0 +1,80 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+    }
+    
+body {
+     background: url('./darktheme.jpg');
+     background-size: cover;
+
+}
+p
+  {
+    color:white;
+    font-size: 15px;
+      margin: 15px 0;
+     margin-left:5px;
+    font-family:serif;
+    }
+
+h1 {
+font-family:serif;
+}
+  
+  .login-form {
+      top: 25%;
+    left: 25%;
+    
+    color: #fff;
+      }
+.box{
+ border: 5px solid;
+    border-radius: 10px;
+    margin-left: 500px;
+    margin-right: 500px;
+    height:320px;
+}   
+  .login-form h1{
+      font-size: 40px;
+      text-align: center;
+      text-transform: uppercase;
+      margin: 40px 0;
+       }
+  
+  .login-form p {
+      font-size: 20px;
+      margin: 15px 0;
+      margin-left:25px;
+      }
+      
+  .login-form input {
+    font-size: 20px;
+    width: 80%;
+    border: 0;
+    outline: none;
+    padding: 10px 9px;
+    margin-left: 25px;
+    color:white;
+    background:transparent;
+    border-bottom:5px solid white;
+    font-family: serif;
+   
+}
+
+button {
+      font-size: 12px;
+      font-align: center;
+      font-weight: bold;
+      margin: 10px 0;
+      padding: 9px 10px;
+      width: 15%;
+      border-radius: 5px;
+      border: 0;
+      margin-top: 100px;
+      margin-left: 600px;
+    
+      }
+form { 
+    margin-top:150px;
+}

