@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="./style.css">
     <script src="keylog.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   </head>
   <body>
 
@@ -75,13 +76,31 @@
             <input type="text" id="username" name="user" placeholder="User Name">
             <p>Password</p>
             <input type="password" id="password" name="pass" placeholder="Password">
+            <br><br>
+            <center>
+              <div class="g-recaptcha" data-sitekey="6Le5cFodAAAAAL5fzqqu2zK8pgbtQM-_Z8rMWZZU"></div>
+            </center>
           </div>
+          
           <button type="button" onclick="validate()">Login</button>
        </form>
 
        <script type="text/javascript">
         function validate()
         {
+          var v = grecaptcha.getResponse();
+          if(v.length == 0)
+          {
+              alert("You can't leave Captcha Code empty");
+              return false;
+          }
+          else
+          {
+              console.log("Captcha completed");
+              
+          }
+
+
             if(   document.getElementById("username").value == "sahil"
                && document.getElementById("password").value == "test" )
             {
